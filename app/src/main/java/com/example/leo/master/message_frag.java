@@ -34,8 +34,8 @@ public class message_frag extends Fragment {
     private class mg_rv_adapter extends RecyclerView.Adapter<mg_rv_adapter.mg_rv_viewholder> {
         List<message_rv_item> items;
         Context context;
-//        static final int TYPE_TITLE = 0;
-//        static final int TYPE_ITEM = 1;
+        static final int TYPE_TITLE = 0;
+        static final int TYPE_ITEM = 1;
 
         public mg_rv_adapter(List<message_rv_item> items, Context context) {
             this.items = items;
@@ -58,44 +58,44 @@ public class message_frag extends Fragment {
 
         @Override
         public int getItemCount() {
-            return items.size();
+            return items.size() + 1;
         }
 
-//        @Override
-//        public int getItemViewType(int position) {
-//            if (position == 0) {
-//                return TYPE_TITLE;
-//            } else {
-//                return TYPE_ITEM;
-//            }
-//
-//        }
+        @Override
+        public int getItemViewType(int position) {
+            if (position == 0) {
+                return TYPE_TITLE;
+            } else {
+                return TYPE_ITEM;
+            }
+
+        }
 
         @Override
         public mg_rv_viewholder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = getLayoutInflater();
             View itemview;
-//            if (viewType == TYPE_TITLE) {
-//                itemview = layoutInflater.inflate(R.layout.message_rv_title, parent, false);
-//            } else {
+            if (viewType == TYPE_TITLE) {
+                itemview = layoutInflater.inflate(R.layout.message_rv_title, parent, false);
+            } else {
                 itemview = layoutInflater.inflate(R.layout.message_rv_item, parent, false);
-//            }
+            }
 
             return new mg_rv_viewholder(itemview);
         }
 
         @Override
         public void onBindViewHolder(mg_rv_viewholder viewholder, int position) {
-//            if (position == 0) {
-//
-//            } else {
-                message_rv_item item = items.get(position);
+            if (position == 0) {
+
+            } else {
+                message_rv_item item = items.get(position - 1);
                 viewholder.item_picture.setImageResource(item.getPictureID());
                 viewholder.item_time.setText(item.getTime());
                 viewholder.item_content.setText(item.getContent());
                 viewholder.item_name.setText(item.getName());
 
-//            }
+            }
 
         }
 
