@@ -7,13 +7,21 @@
     android:orientation="horizontal">
 
 
+    <ImageView
+        android:id="@+id/mg_chatroom_receive_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/picture"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"/>
+
     <com.daasuu.bl.BubbleLayout
         android:id="@+id/mg_chatroom_receive_bubble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/mg_content_receive_picture"
+        android:layout_toEndOf="@+id/mg_chatroom_receive_image"
         android:padding="8dp"
         app:bl_arrowHeight="8dp"
         app:bl_arrowWidth="8dp"
