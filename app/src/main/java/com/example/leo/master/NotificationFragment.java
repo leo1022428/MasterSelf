@@ -108,6 +108,9 @@ public class NotificationFragment extends Fragment {
             }
 
 
+
+
+
 //            click view 轉頁至文章
 //            viewholder.itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override

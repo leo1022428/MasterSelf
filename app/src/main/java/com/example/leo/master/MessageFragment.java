@@ -1,6 +1,7 @@
 package com.example.leo.master;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -107,6 +108,13 @@ public class MessageFragment extends Fragment {
                 viewholder.item_time.setText(item.getTime());
                 viewholder.item_content.setText(item.getContent());
                 viewholder.item_name.setText(item.getName());
+                viewholder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context,MessageChatroom.class);
+                        startActivity(intent);
+                    }
+                });
 
             }
 
