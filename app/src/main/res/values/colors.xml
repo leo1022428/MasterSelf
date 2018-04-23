@@ -6,4 +6,5 @@
     <color name="mg_rv_itemview">#a3c2c1c1</color>
     <color name="nf_rv_itemview">#999797</color>
     <color name="mg_rv_underline">#22000000</color>
+    <color name="chatroom_context">#c4bcbc</color>
 </resources>
