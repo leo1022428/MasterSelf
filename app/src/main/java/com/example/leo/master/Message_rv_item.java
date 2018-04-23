@@ -1,6 +1,6 @@
 package com.example.leo.master;
 
-public class message_rv_item {
+public class Message_rv_item {
     String name;
     String content;
     int pictureID;
@@ -38,7 +38,7 @@ public class message_rv_item {
         this.time = time;
     }
 
-    public message_rv_item(String name, String content, int pictureID, String time) {
+    public Message_rv_item(String name, String content, int pictureID, String time) {
 
         this.name = name;
         this.content = content;

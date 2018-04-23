@@ -1,13 +1,13 @@
 package com.example.leo.master;
 
-public class notification_rv_item {
+public class Notification_rv_item {
     String name;
     String content;
     int pictureID;
     int nf_type;
     String time;
 
-    public notification_rv_item(String name, String content, int pictureID, String time) {
+    public Notification_rv_item(String name, String content, int pictureID, String time) {
         this.name = name;
         this.content = content;
         this.pictureID = pictureID;

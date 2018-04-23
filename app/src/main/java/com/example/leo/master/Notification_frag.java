@@ -16,13 +16,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class notification_frag extends Fragment {
+public class Notification_frag extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle(getString(R.string.nf_title));
         View view = inflater.inflate(R.layout.notification_frag, container, false);
-        List<notification_rv_item> items = getitems();
+        List<Notification_rv_item> items = getitems();
         RecyclerView nf_rv = view.findViewById(R.id.nf_recyclerview);
         nf_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         nf_rv.setAdapter(new nf_rv_adapter(items, getActivity()));
@@ -31,12 +31,12 @@ public class notification_frag extends Fragment {
     }
 
     private class nf_rv_adapter extends RecyclerView.Adapter<nf_rv_adapter.nf_rv_viewholder> {
-        List<notification_rv_item> items;
+        List<Notification_rv_item> items;
         Context context;
         static final int TYPE_TITLE = 0;
         static final int TYPE_ITEM = 1;
 
-        public nf_rv_adapter(List<notification_rv_item> items, Context context) {
+        public nf_rv_adapter(List<Notification_rv_item> items, Context context) {
             this.items = items;
             this.context = context;
         }
@@ -88,7 +88,7 @@ public class notification_frag extends Fragment {
             if (position == 0) {
 
             } else {
-                notification_rv_item item = items.get(position - 1);
+                Notification_rv_item item = items.get(position - 1);
                 viewholder.item_picture.setImageResource(item.getPictureID());
                 viewholder.item_time.setText(item.getTime());
                 viewholder.item_content.setText(item.getContent());
@@ -110,22 +110,22 @@ public class notification_frag extends Fragment {
     }
 
 
-    private List<notification_rv_item> getitems() {
-        List<notification_rv_item> items = new ArrayList<>();
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "昨天"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
-        items.add(new notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+    private List<Notification_rv_item> getitems() {
+        List<Notification_rv_item> items = new ArrayList<>();
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "昨天"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
+        items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "五分鐘前"));
         return items;
     }
 }

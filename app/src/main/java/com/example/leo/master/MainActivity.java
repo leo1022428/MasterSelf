@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static int TYPE = 1;
+    public static int TYPE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
         switch (TYPE) {
             case 0:
-                Fragment nf_fragment = new notification_frag();
+                Fragment nf_fragment = new Notification_frag();
                 fragmentTransaction.replace(R.id.content, nf_fragment);
                 fragmentTransaction.commit();
                 break;
             case 1:
-                Fragment ms_fragment = new message_frag();
+                Fragment ms_fragment = new MessageFragment();
                 fragmentTransaction.replace(R.id.content, ms_fragment);
                 fragmentTransaction.commit();
                 break;
