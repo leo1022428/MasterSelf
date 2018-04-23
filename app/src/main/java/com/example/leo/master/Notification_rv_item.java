@@ -1,10 +1,17 @@
 package com.example.leo.master;
 
+
+//notificaiton recycerview 用到的屬性
 public class Notification_rv_item {
+    //留言回覆者,發文者的姓名
     String name;
+    //留言內容,發文內容
     String content;
+    //留言回覆者,發文者的圖片
     int pictureID;
+    //通知類型
     int nf_type;
+    //通知時間
     String time;
 
     public Notification_rv_item(String name, String content, int pictureID, String time) {

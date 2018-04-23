@@ -16,15 +16,20 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Notification_frag extends Fragment {
+public class NotificationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle(getString(R.string.nf_title));
+        //啟用notificaiton_fragment
         View view = inflater.inflate(R.layout.notification_frag, container, false);
+        //取得notificaiton_recycerview 需要的資料
         List<Notification_rv_item> items = getitems();
+        //初始化notificaiton_recycerview
         RecyclerView nf_rv = view.findViewById(R.id.nf_recyclerview);
+        //設定notificaiton_recycerview layout類型
         nf_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //載入notificaiton_recycerview adapter
         nf_rv.setAdapter(new nf_rv_adapter(items, getActivity()));
         return view;
 
@@ -33,7 +38,9 @@ public class Notification_frag extends Fragment {
     private class nf_rv_adapter extends RecyclerView.Adapter<nf_rv_adapter.nf_rv_viewholder> {
         List<Notification_rv_item> items;
         Context context;
+        //notificaiton_recycerview的position為0時,顯示notificaiton_title
         static final int TYPE_TITLE = 0;
+        //notificaiton_recycerview的position為1時,顯示notificaiton_rv的內容
         static final int TYPE_ITEM = 1;
 
         public nf_rv_adapter(List<Notification_rv_item> items, Context context) {
@@ -43,6 +50,7 @@ public class Notification_frag extends Fragment {
 
 
         public class nf_rv_viewholder extends RecyclerView.ViewHolder {
+            //初始化view中的元件
             ImageView item_picture;
             TextView item_time, item_content;
 
@@ -58,11 +66,14 @@ public class Notification_frag extends Fragment {
 
         @Override
         public int getItemCount() {
+            //position為0時為title, recyclerview內容從1開始顯示, itemcount需往後加1
             return items.size() + 1;
         }
 
+        //定義recyclerview的viewtype,position等於0顯示title,其他為recyclerview內容
         @Override
         public int getItemViewType(int position) {
+
             if (position == 0) {
                 return TYPE_TITLE;
             } else {
@@ -73,6 +84,7 @@ public class Notification_frag extends Fragment {
         public nf_rv_viewholder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             View itemview;
+            //判斷recyclerview的viewType
             if (viewType == TYPE_TITLE) {
                 itemview = layoutInflater.inflate(R.layout.notification_rv_title, parent, false);
             } else {
@@ -88,6 +100,7 @@ public class Notification_frag extends Fragment {
             if (position == 0) {
 
             } else {
+                //將對應的position資料塞入view中
                 Notification_rv_item item = items.get(position - 1);
                 viewholder.item_picture.setImageResource(item.getPictureID());
                 viewholder.item_time.setText(item.getTime());

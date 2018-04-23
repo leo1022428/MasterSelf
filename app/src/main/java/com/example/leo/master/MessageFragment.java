@@ -20,11 +20,16 @@ public class MessageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        getActivity().setTitle(getString(R.string.mg_title));
+        getActivity().setTitle("Message");
+        //啟用message_fragment
         View view = inflater.inflate(R.layout.message_frag, container, false);
+        //取得message_recycerview 需要的資料
         List<Message_rv_item> items = getitems();
+        //初始化message_recycerview
         RecyclerView mg_rv = view.findViewById(R.id.mg_recyclerview);
+        //設定message_recycerview layout類型
         mg_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //載入message_recycerview adapter
         mg_rv.setAdapter(new mg_rv_adapter(items, getActivity()));
         return view;
 
@@ -34,7 +39,9 @@ public class MessageFragment extends Fragment {
     private class mg_rv_adapter extends RecyclerView.Adapter<mg_rv_adapter.mg_rv_viewholder> {
         List<Message_rv_item> items;
         Context context;
+        //message_recycerview的position為0時,顯示message_title
         static final int TYPE_TITLE = 0;
+        //message_recycerview的position為1時,顯示message_rv的內容
         static final int TYPE_ITEM = 1;
 
         public mg_rv_adapter(List<Message_rv_item> items, Context context) {
@@ -43,6 +50,7 @@ public class MessageFragment extends Fragment {
         }
 
         public class mg_rv_viewholder extends RecyclerView.ViewHolder {
+            //初始化view中的元件
             ImageView item_picture;
             TextView item_time, item_content, item_name;
 
@@ -58,9 +66,12 @@ public class MessageFragment extends Fragment {
 
         @Override
         public int getItemCount() {
+            //position為0時為title, recyclerview內容從1開始顯示, itemcount需往後加1
             return items.size() + 1;
         }
 
+
+        //定義recyclerview的viewtype,position等於0顯示title,其他為recyclerview內容
         @Override
         public int getItemViewType(int position) {
             if (position == 0) {
@@ -75,6 +86,7 @@ public class MessageFragment extends Fragment {
         public mg_rv_viewholder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = getLayoutInflater();
             View itemview;
+            //判斷recyclerview的viewType
             if (viewType == TYPE_TITLE) {
                 itemview = layoutInflater.inflate(R.layout.message_rv_title, parent, false);
             } else {
@@ -89,6 +101,7 @@ public class MessageFragment extends Fragment {
             if (position == 0) {
 
             } else {
+                //將對應的position資料塞入view中
                 Message_rv_item item = items.get(position - 1);
                 viewholder.item_picture.setImageResource(item.getPictureID());
                 viewholder.item_time.setText(item.getTime());
@@ -102,6 +115,8 @@ public class MessageFragment extends Fragment {
 
     }
 
+
+    //假資料,之後將改為從server抓資料
     private List<Message_rv_item> getitems() {
         List<Message_rv_item> items = new ArrayList<>();
         items.add(new Message_rv_item("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));

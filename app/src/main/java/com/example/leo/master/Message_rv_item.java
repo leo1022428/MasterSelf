@@ -1,9 +1,15 @@
 package com.example.leo.master;
 
+
+//message recyclerview 用到的屬性
 public class Message_rv_item {
+    //對方姓名
     String name;
+    //message內容
     String content;
+    //對方圖片
     int pictureID;
+    //訊息時間
     String time;
 
     public String getName() {

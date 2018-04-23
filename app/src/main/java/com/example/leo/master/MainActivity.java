@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (TYPE) {
             case 0:
-                Fragment nf_fragment = new Notification_frag();
+                Fragment nf_fragment = new NotificationFragment();
                 fragmentTransaction.replace(R.id.content, nf_fragment);
                 fragmentTransaction.commit();
                 break;
