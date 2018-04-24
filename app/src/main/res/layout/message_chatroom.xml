@@ -5,6 +5,7 @@
     android:background="@color/mg_chatroom_context"
     android:orientation="horizontal">
 
+
     <EditText
         android:id="@+id/mg_chatroom_etmessage"
         android:layout_width="270dp"
