@@ -105,19 +105,16 @@ public class NotificationFragment extends Fragment {
                 viewholder.item_picture.setImageResource(item.getPictureID());
                 viewholder.item_time.setText(item.getTime());
                 viewholder.item_content.setText(item.getContent());
-            }
-
-
-
-
-
-//            click view 轉頁至文章
-//            viewholder.itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
+//                click itemview 轉頁至文章
+//                viewholder.itemView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
 //
-//                }
-//            });
+//                    }
+//                });
+
+
+            }
 
 
         }
@@ -125,7 +122,7 @@ public class NotificationFragment extends Fragment {
 
     }
 
-
+    //假資料,之後將會替換成database內容
     private List<Notification_rv_item> getitems() {
         List<Notification_rv_item> items = new ArrayList<>();
         items.add(new Notification_rv_item("邊緣人", "某某某學員也想要參加你的揪團", R.drawable.picture, "昨天"));
