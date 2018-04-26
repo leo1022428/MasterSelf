@@ -1,9 +1,11 @@
-package com.example.leo.master;
+package com.example.leo.master.Message;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.example.leo.master.R;
 
 public class MessageChatroom extends AppCompatActivity {
 

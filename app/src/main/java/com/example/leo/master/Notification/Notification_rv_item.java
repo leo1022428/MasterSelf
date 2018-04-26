@@ -1,4 +1,4 @@
-package com.example.leo.master;
+package com.example.leo.master.Notification;
 
 
 //notificaiton recycerview 用到的屬性

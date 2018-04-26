@@ -6,9 +6,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.leo.master.Message.MessageFragment;
+import com.example.leo.master.Notification.NotificationFragment;
+
 public class MainActivity extends AppCompatActivity {
 
-    public static int TYPE = 1;
+    public static int TYPE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

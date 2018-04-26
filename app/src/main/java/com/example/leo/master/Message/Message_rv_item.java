@@ -1,4 +1,4 @@
-package com.example.leo.master;
+package com.example.leo.master.Message;
 
 
 //message recyclerview 用到的屬性
