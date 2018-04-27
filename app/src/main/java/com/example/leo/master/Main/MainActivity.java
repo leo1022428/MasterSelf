@@ -1,4 +1,4 @@
-package com.example.leo.master;
+package com.example.leo.master.Main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.example.leo.master.Message.MessageFragment;
 import com.example.leo.master.Notification.NotificationFragment;
+import com.example.leo.master.R;
 
 public class MainActivity extends AppCompatActivity {
 
