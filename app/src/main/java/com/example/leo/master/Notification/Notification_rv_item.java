@@ -1,7 +1,5 @@
 package com.example.leo.master.Notification;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
