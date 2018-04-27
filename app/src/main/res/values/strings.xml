@@ -9,4 +9,5 @@
     <string name="mg_frag_content">你好你好你好你</string>
     <string name="mg_chatroom_send">send</string>
     <string name="mg_chatroom_etmessage">Enter a message</string>
+    <string name="NoConnection">NoNetworkConnection</string>
 </resources>
