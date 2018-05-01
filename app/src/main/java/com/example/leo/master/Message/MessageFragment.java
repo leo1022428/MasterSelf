@@ -100,12 +100,12 @@ public class MessageFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(mg_rv_viewholder viewholder, int position) {
+        public void onBindViewHolder(final mg_rv_viewholder viewholder, int position) {
             if (position == 0) {
 
             } else {
                 //將對應的position資料塞入view中
-                Message_rv_item item = items.get(position - 1);
+                final Message_rv_item item = items.get(position - 1);
                 viewholder.item_picture.setImageResource(item.getPictureID());
                 viewholder.item_time.setText(item.getTime());
                 viewholder.item_content.setText(item.getContent());
@@ -114,7 +114,9 @@ public class MessageFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(context,MessageChatroom.class);
+                        intent.putExtra("Name",item.getName());
                         startActivity(intent);
+
                     }
                 });
 

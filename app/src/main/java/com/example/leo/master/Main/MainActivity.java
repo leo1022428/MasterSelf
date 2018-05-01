@@ -12,7 +12,7 @@ import com.example.leo.master.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static int TYPE = 0;
+    public static int TYPE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -143,6 +143,8 @@ public class NotificationFragment extends Fragment {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("action", "getAll");
             jsonObject.addProperty("user_id", Common.user_id);
+            jsonObject.addProperty("post_id", "3");
+
             myTask = new MyTask(Common.URL + "/NotificationServlet", jsonObject.toString());
             try {
                 String jsonin = myTask.execute().get();
@@ -155,7 +157,7 @@ public class NotificationFragment extends Fragment {
 
         }else {
             Toast.makeText(getActivity(),R.string.NoConnection,Toast.LENGTH_SHORT);
-        }
+    }
         return items;
     }
 }
