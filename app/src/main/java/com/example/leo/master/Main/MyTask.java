@@ -54,7 +54,7 @@ public class MyTask extends AsyncTask<String, Integer, String> {
                 Log.d(TAG, "response code: " + responseCode);
             }
         } catch (IOException e) {
-            Log.e(TAG, e.toString());
+            Log.e(TAG, " Error : " + e.toString());
         } finally {
             if (connection != null) {
                 connection.disconnect();

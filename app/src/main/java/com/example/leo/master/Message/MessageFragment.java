@@ -27,7 +27,7 @@ public class MessageFragment extends Fragment {
         //啟用message_fragment
         View view = inflater.inflate(R.layout.message_frag, container, false);
         //取得message_recycerview 需要的資料
-        List<Message_rv_item> items = getitems();
+        List<Message> items = getitems();
         //初始化message_recycerview
         RecyclerView mg_rv = view.findViewById(R.id.mg_recyclerview);
         //設定message_recycerview layout類型
@@ -40,14 +40,14 @@ public class MessageFragment extends Fragment {
 
 
     private class mg_rv_adapter extends RecyclerView.Adapter<mg_rv_adapter.mg_rv_viewholder> {
-        List<Message_rv_item> items;
+        List<Message> items;
         Context context;
         //message_recycerview的position為0時,顯示message_title
         static final int TYPE_TITLE = 0;
         //message_recycerview的position為1時,顯示message_rv的內容
         static final int TYPE_ITEM = 1;
 
-        public mg_rv_adapter(List<Message_rv_item> items, Context context) {
+        public mg_rv_adapter(List<Message> items, Context context) {
             this.items = items;
             this.context = context;
         }
@@ -105,7 +105,7 @@ public class MessageFragment extends Fragment {
 
             } else {
                 //將對應的position資料塞入view中
-                final Message_rv_item item = items.get(position - 1);
+                final Message item = items.get(position - 1);
                 viewholder.item_picture.setImageResource(item.getPictureID());
                 viewholder.item_time.setText(item.getTime());
                 viewholder.item_content.setText(item.getContent());
@@ -129,18 +129,18 @@ public class MessageFragment extends Fragment {
 
 
     //假資料,之後將改為從server抓資料
-    private List<Message_rv_item> getitems() {
-        List<Message_rv_item> items = new ArrayList<>();
-        items.add(new Message_rv_item("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
-        items.add(new Message_rv_item("邊緣人", "你好你在嗎,可以跟你當朋友嗎？", R.drawable.picture, "10:24 PM"));
-        items.add(new Message_rv_item("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
-        items.add(new Message_rv_item("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
-        items.add(new Message_rv_item("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
-        items.add(new Message_rv_item("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
-        items.add(new Message_rv_item("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
-        items.add(new Message_rv_item("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
-        items.add(new Message_rv_item("工具人", "你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎", R.drawable.picture, "10:50 PM"));
-        items.add(new Message_rv_item("外國人", "Could I FXXK U", R.drawable.picture, "4:09 AM"));
+    private List<Message> getitems() {
+        List<Message> items = new ArrayList<>();
+        items.add(new Message("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
+        items.add(new Message("邊緣人", "你好你在嗎,可以跟你當朋友嗎？", R.drawable.picture, "10:24 PM"));
+        items.add(new Message("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
+        items.add(new Message("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
+        items.add(new Message("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
+        items.add(new Message("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
+        items.add(new Message("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
+        items.add(new Message("工具人", "你在洗澡嗎", R.drawable.picture, "10:50 PM"));
+        items.add(new Message("工具人", "你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎你在洗澡嗎", R.drawable.picture, "10:50 PM"));
+        items.add(new Message("外國人", "Could I FXXK U", R.drawable.picture, "4:09 AM"));
         return items;
     }
 }

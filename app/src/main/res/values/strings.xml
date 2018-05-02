@@ -10,4 +10,6 @@
     <string name="mg_chatroom_send">send</string>
     <string name="mg_chatroom_etmessage">Enter a message</string>
     <string name="NoConnection">NoNetworkConnection</string>
+    <string name="NoNotifications">No Notifications Found</string>
+    <string name="NoMessage">Please Enter a Message</string>
 </resources>

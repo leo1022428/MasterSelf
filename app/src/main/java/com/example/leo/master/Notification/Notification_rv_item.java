@@ -8,15 +8,15 @@ import java.util.Date;
 // notificaiton recycerview 用到的屬性
 public class Notification_rv_item {
     // 留言回覆者,發文者的姓名
-    String name;
+    private String name;
     // 留言內容,發文內容
-    String content;
+    private String content;
     // 通知類型
-    int nf_type;
+    private int nf_type;
     // 通知時間
-    Date time;
+    private Date time;
     //通知對應的文章
-    int post_id;
+    private int post_id;
 
     public Notification_rv_item(String name, String content, Date time, int post_id) {
         this.name = name;
@@ -48,9 +48,12 @@ public class Notification_rv_item {
                 text = name + " 發出了新的文章";
                 break;
             case 2:
-                text = name + " 回覆了你的貼文";
+                text = name + " 發出了新的心得文";
                 break;
             case 3:
+                text = name + " 回覆了你的貼文";
+                break;
+            case 4:
                 text = name + " 也回覆了你的留言";
                 break;
         }
@@ -72,9 +75,9 @@ public class Notification_rv_item {
         //通知時間
         String formatTimeDate = FormatDate.format(time);
         //比對目前時間與通知時間
-        if (formatNowDate.equals(formatTimeDate)){
+        if (formatNowDate.equals(formatTimeDate)) {
             Time = FormatTime.format(time);
-        }else {
+        } else {
             Time = formatTimeDate;
         }
         return Time;

@@ -2,15 +2,17 @@ package com.example.leo.master.Message;
 
 
 //message recyclerview 用到的屬性
-public class Message_rv_item {
+public class Message {
     //對方姓名
-    String name;
+    private String name;
     //message內容
-    String content;
+    private String content;
     //對方圖片
-    int pictureID;
+    private int pictureID;
     //訊息時間
-    String time;
+    private String time;
+    //訊息的種類(發出的訊息為0,收到的訊息為1)
+    private int message_type;
 
     public String getName() {
         return name;
@@ -44,11 +46,27 @@ public class Message_rv_item {
         this.time = time;
     }
 
-    public Message_rv_item(String name, String content, int pictureID, String time) {
+    public Message(String name, String content, int pictureID, String time) {
 
         this.name = name;
         this.content = content;
         this.pictureID = pictureID;
         this.time = time;
+    }
+
+    public int getMessage_type() {
+        return message_type;
+    }
+
+    public void setMessage_type(int message_type) {
+        this.message_type = message_type;
+    }
+
+    public Message(String name, String content, String time, int message_type) {
+        this.name = name;
+        this.content = content;
+        this.time = time;
+        this.message_type = message_type;
+
     }
 }
