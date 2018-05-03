@@ -20,7 +20,8 @@
         </activity>
         <activity
             android:name=".Message.MessageChatroom"
-            android:theme="@style/MessageTheme" />
+            android:theme="@style/MessageTheme"
+            />
     </application>
 
 </manifest>

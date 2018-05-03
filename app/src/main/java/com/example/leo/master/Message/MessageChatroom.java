@@ -11,12 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
+import com.example.leo.master.Main.Common;
 import com.example.leo.master.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MessageChatroom extends AppCompatActivity {
@@ -39,14 +41,15 @@ public class MessageChatroom extends AppCompatActivity {
         //設定有文字輸入才可以按button
         textchanged();
         messages = getMessages();
-        mg_chatroom_rv.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayout = new LinearLayoutManager(this);
+        mg_chatroom_rv.setLayoutManager(linearLayout);
         mg_chatroom_rv.setAdapter(new MessageAdapter(messages, this));
-//        mg_chatroom_scrollView.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                mg_chatroom_scrollView.fullScroll(View.FOCUS_DOWN);
-//            }
-//        });
+        mg_chatroom_scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                mg_chatroom_scrollView.fullScroll(View.FOCUS_DOWN);
+            }
+        });
 
 
 //        messages.addAll(receive);
@@ -62,7 +65,7 @@ public class MessageChatroom extends AppCompatActivity {
         mg_chatroom_message = findViewById(R.id.mg_chatroom_message);
         mg_chatroom_send = findViewById(R.id.mg_chatroom_send);
         mg_chatroom_message.setWidth(width * 3 / 4);
-        mg_chatroom_send.setWidth(width / 4);
+//        mg_chatroom_send.setWidth(width / 4);
 
     }
 
@@ -73,8 +76,10 @@ public class MessageChatroom extends AppCompatActivity {
             case android.R.id.home:
                 finish();
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
+
+
 
 
     private void textchanged() {
@@ -86,6 +91,7 @@ public class MessageChatroom extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
                 String message = mg_chatroom_message.getText().toString();
                 if (message.trim().isEmpty()) {
                     mg_chatroom_send.setEnabled(false);
@@ -103,14 +109,18 @@ public class MessageChatroom extends AppCompatActivity {
 
 
     public void clickSend(View view) {
-        String message = mg_chatroom_message.getText().toString();
-        if (message.trim().isEmpty()) {
-            Toast.makeText(this, R.string.NoMessage, Toast.LENGTH_SHORT);
-        } else {
-            mg_chatroom_send.setEnabled(true);
-        }
-
+        String input = mg_chatroom_message.getText().toString();
+        Date date = new Date();
+        messages.add(new Message(Common.user_id, input, "date", 0));
+        mg_chatroom_rv.getAdapter().notifyDataSetChanged();
+        mg_chatroom_scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                mg_chatroom_scrollView.fullScroll(View.FOCUS_DOWN);
+            }
+        });
     }
+
 
 
     public List<Message> getMessages() {
