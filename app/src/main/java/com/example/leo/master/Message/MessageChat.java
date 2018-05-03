@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class MessageChatroom extends AppCompatActivity {
+public class MessageChat extends AppCompatActivity {
     EditText mg_chatroom_message;
     Button mg_chatroom_send;
     RecyclerView mg_chatroom_rv;
@@ -131,11 +131,11 @@ public class MessageChatroom extends AppCompatActivity {
         messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 0));
         messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 0));
         messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 1));
-        messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 0));
-        messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 1));
-        messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 1));
-        messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 1));
-        messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 0));
+//        messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 0));
+//        messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 1));
+//        messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 1));
+//        messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 1));
+//        messages.add(new Message("邊緣人", "安安你好嗎？", "18:00", 0));
         return messages;
     }
 
