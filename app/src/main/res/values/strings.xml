@@ -12,4 +12,5 @@
     <string name="NoConnection">NoNetworkConnection</string>
     <string name="NoNotifications">No Notifications Found</string>
     <string name="NoMessage">Please Enter a Message</string>
+    <string name="nf_newnotificaiton">你有新的通知</string>
 </resources>

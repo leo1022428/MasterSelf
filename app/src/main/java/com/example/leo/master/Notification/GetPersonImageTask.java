@@ -2,7 +2,6 @@ package com.example.leo.master.Notification;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
@@ -12,22 +11,21 @@ import com.google.gson.JsonObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetImageTask extends AsyncTask<Object, Integer, Bitmap> {
-    private String url;
-    private int post_id, imageSize;
+public class GetPersonImageTask extends AsyncTask<Object, Integer, Bitmap> {
+    private String url, user_Name;
+    private int imageSize;
     private WeakReference<ImageView> imageViewWeakReference;
-    private final static String TAG = "GetImageTask";
+    private final static String TAG = "GetPersonImageTask";
 
 
-    public GetImageTask(String url, int post_id, int imageSize, ImageView imageView) {
+    public GetPersonImageTask(String url, String user_Name, int imageSize, ImageView imageView) {
         this.url = url;
-        this.post_id = post_id;
+        this.user_Name = user_Name;
         this.imageSize = imageSize;
         this.imageViewWeakReference = new WeakReference<>(imageView);
     }
@@ -35,8 +33,8 @@ public class GetImageTask extends AsyncTask<Object, Integer, Bitmap> {
     @Override
     protected Bitmap doInBackground(Object... objects) {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("action", "getImage");
-        jsonObject.addProperty("post_id", post_id);
+        jsonObject.addProperty("action", "getPersonImage");
+        jsonObject.addProperty("user_Name", user_Name);
         jsonObject.addProperty("imageSize", imageSize);
         return getRemoteImage(url, jsonObject.toString());
     }
@@ -75,17 +73,20 @@ public class GetImageTask extends AsyncTask<Object, Integer, Bitmap> {
         return bitmap;
     }
 
+
     @Override
     protected void onPostExecute(Bitmap bitmap) {
         ImageView imageView = imageViewWeakReference.get();
-        if (imageView == null){
+        if (imageView == null) {
             return;
         }
-        if (bitmap != null){
+        if (bitmap != null) {
             imageView.setImageBitmap(bitmap);
-        }else {
+        } else {
             imageView.setImageResource(R.drawable.picture);
         }
 
     }
+
 }
+

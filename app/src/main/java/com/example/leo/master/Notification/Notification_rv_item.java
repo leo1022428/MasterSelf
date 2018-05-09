@@ -2,17 +2,18 @@ package com.example.leo.master.Notification;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 // notificaiton recycerview 用到的屬性
-public class Notification_rv_item {
+public class Notification_rv_item implements Serializable{
     // 留言回覆者,發文者的姓名
     private String name;
     // 留言內容,發文內容
     private String content;
     // 通知類型
-    private int nf_type;
+    public int nf_type;
     // 通知時間
     private Date time;
     //通知對應的文章
@@ -45,7 +46,7 @@ public class Notification_rv_item {
         String text = null;
         switch (nf_type) {
             case 1:
-                text = name + " 發出了新的文章";
+                text = name + " 發出了新的課程文章";
                 break;
             case 2:
                 text = name + " 發出了新的心得文";
@@ -54,7 +55,7 @@ public class Notification_rv_item {
                 text = name + " 回覆了你的貼文";
                 break;
             case 4:
-                text = name + " 也回覆了你的留言";
+                text = name + " 的文章有了新的留言";
                 break;
         }
 
