@@ -74,12 +74,12 @@ public class Notification_rv_item implements Serializable{
         //目前時間
         String formatNowDate = FormatDate.format(nowdate);
         //通知時間
-        String formatTimeDate = FormatDate.format(time);
+        String formatNFDate = FormatDate.format(time);
         //比對目前時間與通知時間
-        if (formatNowDate.equals(formatTimeDate)) {
+        if (formatNowDate.equals(formatNFDate)) {
             Time = FormatTime.format(time);
         } else {
-            Time = formatTimeDate;
+            Time = formatNFDate;
         }
         return Time;
     }

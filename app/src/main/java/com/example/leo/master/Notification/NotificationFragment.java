@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,6 +33,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationFragment extends Fragment {
@@ -40,7 +42,7 @@ public class NotificationFragment extends Fragment {
     GetPersonImageTask getPersonImageTask;
     RecyclerView nf_rv;
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-    List<Notification_rv_item> items;
+    List<Notification_rv_item> items = new ArrayList<>();
     private final static String TAG = "Notification";
 
 
@@ -62,7 +64,6 @@ public class NotificationFragment extends Fragment {
         return view;
 
     }
-
 
 
     @Override
@@ -103,8 +104,11 @@ public class NotificationFragment extends Fragment {
 
         @Override
         public int getItemCount() {
+
             //position為0時為title, recyclerview內容從1開始顯示, itemcount需往後加1
             return items.size() + 1;
+
+
         }
 
         //定義recyclerview的viewtype,position等於0顯示title,其他為recyclerview內容
@@ -139,22 +143,36 @@ public class NotificationFragment extends Fragment {
             } else {
                 //將對應的position資料塞入view中
                 final Notification_rv_item item = items.get(position - 1);
-                if (item.nf_type == 1 || item.nf_type == 2) {
-                    getPostImageTask = new GetPostImageTask(Common.URL + "/NotificationServlet",
-                            item.getPost_id(), getResources().getDisplayMetrics().widthPixels, viewholder.item_picture);
-                    getPostImageTask.execute();
-                } else {
-                    getPersonImageTask = new GetPersonImageTask(Common.URL + "/NotificationServlet",
-                            item.getName(), getResources().getDisplayMetrics().widthPixels, viewholder.item_picture);
-                    getPersonImageTask.execute();
+                switch (item.nf_type) {
+                    case 1:
+                        getPostImageTask = new GetPostImageTask(Common.URL + "/NotificationServlet",
+                                item.getPost_id(), getResources().getDisplayMetrics().widthPixels, viewholder.item_picture);
+                        getPostImageTask.execute();
+                        break;
+                    case 2:
+                        getPostImageTask = new GetPostImageTask(Common.URL + "/NotificationServlet",
+                                item.getPost_id(), getResources().getDisplayMetrics().widthPixels, viewholder.item_picture);
+                        getPostImageTask.execute();
+                        break;
+                    case 3:
+                        getPersonImageTask = new GetPersonImageTask(Common.URL + "/NotificationServlet",
+                                item.getName(), getResources().getDisplayMetrics().widthPixels, viewholder.item_picture);
+                        getPersonImageTask.execute();
+                        break;
+
+                    case 4:
+                        getPersonImageTask = new GetPersonImageTask(Common.URL + "/NotificationServlet",
+                                item.getName(), getResources().getDisplayMetrics().widthPixels, viewholder.item_picture);
+                        getPersonImageTask.execute();
+                        break;
+
 
                 }
                 viewholder.item_time.setText(item.getTime());
                 viewholder.item_content.setText(item.getNf_type());
 
+
 //                click itemview 轉頁至文章
-
-
                 viewholder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

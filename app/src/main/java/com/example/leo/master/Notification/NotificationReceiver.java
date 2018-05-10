@@ -17,21 +17,23 @@ public class NotificationReceiver extends BroadcastReceiver {
     NotificationManager notificationManager;
 
     private final static int NOTIFICATON_ID = 0;
+
     @Override
     public void onReceive(Context context, Intent intent) {
         notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
         Intent nf_intent = new Intent(context, MainActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("Notification_code","Notification");
+        bundle.putString("type", "Notification");
+        bundle.putString("type", "Message");
         nf_intent.putExtras(bundle);
         nf_intent.setAction(Intent.ACTION_MAIN);
         nf_intent.addCategory(Intent.CATEGORY_LAUNCHER);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(context,0,nf_intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, nf_intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification notification = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = new NotificationChannel("1","channel1", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel notificationChannel = new NotificationChannel("1", "channel1", NotificationManager.IMPORTANCE_DEFAULT);
             notificationChannel.enableLights(true);
             notificationChannel.setLightColor(Color.GREEN);
             notificationManager.createNotificationChannel(notificationChannel);
@@ -39,22 +41,22 @@ public class NotificationReceiver extends BroadcastReceiver {
                     .setTicker("New Notification") // ticker text is no longer displayed in Android 5.0
                     .setContentTitle(context.getString(R.string.nf_newnotificaiton))
                     .setContentText("你收到了新的通知訊息")
-                    .setSmallIcon(android.R.drawable.ic_dialog_email)
+                    .setSmallIcon(R.drawable.notification)
                     .setAutoCancel(true)
                     .setContentIntent(pendingIntent)
                     .build();
-        }else {
+        } else {
             notification = new Notification.Builder(context)
                     .setTicker("New Notification") // ticker text is no longer displayed in Android 5.0
                     .setContentTitle(context.getString(R.string.nf_newnotificaiton))
                     .setContentText("你收到了新的通知訊息")
-                    .setSmallIcon(android.R.drawable.ic_dialog_email)
+                    .setSmallIcon(R.drawable.notification)
                     .setAutoCancel(true)
                     .setContentIntent(pendingIntent)
                     .setPriority(Notification.PRIORITY_MAX)
                     .build();
         }
-        notificationManager.notify(NOTIFICATON_ID,notification);
+        notificationManager.notify(NOTIFICATON_ID, notification);
     }
 
 }

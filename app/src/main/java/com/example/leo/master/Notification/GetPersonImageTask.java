@@ -31,6 +31,13 @@ public class GetPersonImageTask extends AsyncTask<Object, Integer, Bitmap> {
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        ImageView imageView = imageViewWeakReference.get();
+        imageView.setImageResource(R.drawable.picture);
+    }
+
+    @Override
     protected Bitmap doInBackground(Object... objects) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("action", "getPersonImage");
@@ -78,7 +85,7 @@ public class GetPersonImageTask extends AsyncTask<Object, Integer, Bitmap> {
     protected void onPostExecute(Bitmap bitmap) {
         ImageView imageView = imageViewWeakReference.get();
         if (imageView == null) {
-            return;
+            cancel(true);
         }
         if (bitmap != null) {
             imageView.setImageBitmap(bitmap);

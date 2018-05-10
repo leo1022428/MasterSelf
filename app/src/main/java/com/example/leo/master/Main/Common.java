@@ -12,9 +12,9 @@ import java.net.URISyntaxException;
 
 public class Common {
 //    public static String URL = "http://192.168.43.105:8080/Master";
-    public static String URL = "http://10.0.2.2:8080/Master";
+    public static String URL = "http://192.168.197.13:8080/Master";
     public static final String SOCKET_URI =
-            "ws://10.0.2.2:8080/Master/NotificationSocket/";
+            "ws://192.168.197.13:8080/Master/NotificationSocket/";
     public static String user_id = "girl";
     public static NotificationSocket notificationSocket;
     private final static String TAG = "Common";
